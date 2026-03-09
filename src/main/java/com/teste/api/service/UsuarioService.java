@@ -1,5 +1,6 @@
 package com.teste.api.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,5 +21,9 @@ public class UsuarioService {
 
     public Optional<Usuario> getUsuario(int id) {
         return repository.findById(id);
+    }
+
+    public List<Usuario> listarTodos() {
+        return repository.findAll(); // O JpaRepository faz o 'SELECT * FROM usuarios'
     }
 }

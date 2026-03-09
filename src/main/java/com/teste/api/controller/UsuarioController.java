@@ -29,6 +29,11 @@ public class UsuarioController {
         return usuario.orElse(null);
     }
 
+    @GetMapping("/usuarios")
+    public ResponseEntity<?> listarTodos() {
+        return ResponseEntity.ok(usuarioService.listarTodos());
+    }
+
     @PostMapping("/usuario")
     public ResponseEntity<Usuario> criarUsuario(@RequestBody UsuarioDTO usuario) {
         Usuario novoUsuario = new Usuario();
