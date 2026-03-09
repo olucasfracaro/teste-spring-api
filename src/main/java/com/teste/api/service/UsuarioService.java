@@ -19,6 +19,14 @@ public class UsuarioService {
         return repository.save(usuario);
     }
 
+    public boolean deletarUsuario(int id) {
+        if (repository.existsById(id)) {
+            repository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
+
     public Optional<Usuario> getUsuario(int id) {
         return repository.findById(id);
     }

@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,5 +44,14 @@ public class UsuarioController {
 
         Usuario salvo = usuarioService.criarUsuario(novoUsuario);
         return new ResponseEntity<>(salvo, HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/usuario/{id}")
+    public ResponseEntity<Void> deletarUsuario(@PathVariable int id) {
+        if (usuarioService.deletarUsuario(id)) {
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }
